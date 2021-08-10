@@ -20,18 +20,17 @@ let ahmad = new Child('ahmad', 2, 6, 'bear')
 let rama = new Child('rama', 4, 8, 'cat')
 let moh = new Child('mohammad', 3, 5, 'lego')
 
-
+// console.log(childArr.length);
 
 Child.prototype.calChildAge = function () {
     for (let i = 0; i < childArr.length; i++) {
-        let old = randomAge(this.min, this.max);
-        this.theAge.push(old);
+        this.theAge.push(randomAge(this.min, this.max));
+        // console.log(this.theAge[i]);
         // childArr[i].childAge();
-
-
     }
-    // console.log(this.theAge);
+    
 }
+// console.log(childArr.length);
 
 // console.log(childArr);
 
@@ -64,15 +63,16 @@ Child.prototype.render = function () {
     dataRaw.appendChild(nameTd);
     nameTd.textContent = this.name;
 
-    let ageTd = document.createElement('tr');
+    let ageTd = document.createElement('td');
     dataRaw.appendChild(ageTd);
 
-
-
+    
     for (let i = 0; i < childArr.length; i++) {
-        // childArr[i].render();
-        childArr[i].calChildAge();
+        
         ageTd.textContent = this.theAge[i];
+        childArr[i].calChildAge();
+        console.log(childArr);
+        // console.log(childArr.length);
     }
     let toyTd = document.createElement('td');
     dataRaw.appendChild(toyTd);
@@ -96,9 +96,9 @@ function makeFooter() {
         
         for (let j = 0; j < childArr.length; j++) {
             total+=childArr[j].theAge[i];
-            console.log(childArr[j]);
+            // console.log(childArr[j]);
         }
-        console.log(total);
+        // console.log(total);
         let footerValue=document.createElement('th');
         footerRaw.appendChild(footerValue);
         footerValue.textContent= total;
@@ -106,4 +106,25 @@ function makeFooter() {
         
 }
 makeFooter();
+let form =document.getElementById('form');
 
+form.addEventListener('submit',submitter);
+
+function submitter(event) {
+    event.preventDefault();
+    let childname= event.target.nameField.value;
+    let miniAge=parseInt(event.target.minAgeField.value);
+    let maxiAge=parseInt(event.target.maxAgeField.value);
+    let favoToy=event.target.favToy.value;
+    let addedChild=new Child(childname,miniAge,maxiAge,favoToy);
+    table.textContent = "";
+
+    addedChild.calChildAge();
+    makeHead();
+
+    for (let i = 0; i < childArr.length; i++) {
+        childArr[i].render(); 
+    }
+    // console.log(addedChild);
+    makeFooter();
+}
