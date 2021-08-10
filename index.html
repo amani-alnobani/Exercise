@@ -3,63 +3,50 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <style>
-body {
-  font-family: Arial;
-  color: white;
-}
-
-.split {
-  height: 100%;
-  width: 50%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.left {
-  left: 0;
-  background-color: #111;
-}
-
-.right {
-  right: 0;
-  background-color: red;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.centered img {
-  width: 150px;
-  border-radius: 50%;
-}
-</style> -->
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <header>
+    <h1>child shop</h1>
+  </header>
+  <main>
+    <!-- name,minAge,maxAge,favToy -->
+    <form id="form">
+      <fieldset>
+        <label for="name">Child Name</label>
+        <input type="text" name="name" id="nameField" required>
+        <br>
+        <br>
+        <br>
 
-<div class="split left">
-  <div class="centered">
-    <img src="img_avatar2.png" alt="Avatar woman">
-    <h2>Jane Flex</h2>
-    <p>Some text.</p>
-  </div>
-</div>
 
-<div class="split right">
-  <div class="centered">
-    <img src="img_avatar.png" alt="Avatar man">
-    <h2>John Doe</h2>
-    <p>Some text here too.</p>
-  </div>
-</div>
+        <label for="minAge">Min Age</label>
+        <input type="number" name="minAge" id="minAgeField" required>
+
+
+        <br>
+        <br>
+        <br>
+
+        <label for="maxAge">Max Age</label>
+        <input type="number" name="maxAge" id="maxAgeField" required>
+
+        <br>
+        <br>
+        <br>
+
+        <label for="favToy">Fav Toy</label>
+        <input type="text" name="favToy" id="favToy" required>
+
+        <br>
+        <br>
+        <br>
+
+        <input type="submit">
+
+      </fieldset>
+    </form>
+  </main>
 <div id="parent"></div>
      <script src="app.js"></script>
 </body>
